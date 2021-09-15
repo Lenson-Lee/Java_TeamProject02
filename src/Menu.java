@@ -13,6 +13,22 @@ public class Menu {
     public Menu() {
     }
 
+    // 숫자 입력(메뉴, 전투)
+    public int inputNum() {
+        while(true) {
+            int menuNum = 0;
+            try {
+                System.out.print(">> ");
+                menuNum = sc.nextInt();
+                return menuNum;
+            } catch (Exception e) {
+                System.out.println("숫자를 입력해주세요!");
+                sc.nextLine();
+            }
+        }
+    }
+
+    // 메인 메뉴
     public void mainMenu() {
 
         //메뉴 시작 메서드
@@ -23,8 +39,7 @@ public class Menu {
             System.out.println("3. 랭킹 조회");
             System.out.println("0. 프로그램 종료");
 
-            System.out.print("# 메뉴 번호: ");
-            int menuNum = sc.nextInt();
+            int menuNum = inputNum();
             System.out.println();
 
             switch (menuNum){
@@ -47,10 +62,12 @@ public class Menu {
                     viewCharacter();
                     break;
                 case 3:
-                    System.out.println(gm.showRanking());
+                    System.out.println("랭킹을 조회합니다.");
+                    gm.showRanking();
                     break;
                 case 0:
                     System.out.println("프로그램을 종료합니다.");
+                    sc.close();
                     System.exit(0);//프로그램 종료
                 default:
                     System.out.println("메뉴를 잘못 입력했습니다.");
@@ -70,8 +87,8 @@ public class Menu {
             System.out.println("1. 전사");
             System.out.println("2. 마법사");
             System.out.println("3. 궁수");
-            System.out.print("클래스 선택 : ");
-            classSelect = sc.nextInt();
+            System.out.print("클래스 선택 ");
+            classSelect = inputNum();
             System.out.print("닉네임 입력 : ");
             String name = sc.next();
 
@@ -134,6 +151,7 @@ public class Menu {
                 return;
             } else if(answer.equalsIgnoreCase("n")) { // 프로그램 종료
                 System.out.println("프로그램을 종료합니다.");
+                sc.close();
                 System.exit(0);//프로그램 종료
             } else {
                 System.out.println("잘못된 입력입니다.");
@@ -164,8 +182,7 @@ public class Menu {
             System.out.println("1. 공격");
             System.out.println("2. 방어");
             checkPossibleUseSkill();
-            System.out.print("선택 : ");
-            int selectPlay = sc.nextInt();
+            int selectPlay = inputNum();
             sc.nextLine();
 
             System.out.println();

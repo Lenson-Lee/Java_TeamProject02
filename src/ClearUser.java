@@ -22,4 +22,5 @@ public class ClearUser {
     public void setName(String name) {
         this.name = name;
     }
+
 }
